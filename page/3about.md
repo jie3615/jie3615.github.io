@@ -14,10 +14,9 @@ type: page
 主攻后端，喜欢深入！
 
 ## 联系我
-
-<!-- * GitHub：[Gaohaoyang](https://github.com/Gaohaoyang) -->
 * email：11jkyj@sina.com
-<!-- * [Weibo](http://weibo.com/3115521wh)
+<!-- * GitHub：[Gaohaoyang](https://github.com/Gaohaoyang)
+* [Weibo](http://weibo.com/3115521wh)
 * [知乎](https://www.zhihu.com/people/gaohaoyang)
 * [Facebook](https://www.facebook.com/gaohaoyang.water)
 * [豆瓣](https://www.douban.com/people/42525035/)
