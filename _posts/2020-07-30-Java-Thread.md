@@ -48,7 +48,12 @@ class Thread implements Runnable {
 通常我们使用线程都是调用的start()方法；    
 从上面的Thread的源码结构我们可以看到start()方法
 先判断是否是NEW状态，如果不是，抛出线程状态异常；
-接下来执行start0()；这是个本地方法
+接下来执行start0()
+
+
+
+
+
 ## Jvm中定义的线程
 下面我们打开openjdk查看一下jdk中本地方法的定义，打开Thread.c
 
