@@ -1,12 +1,13 @@
 ---
 layout: post
 title:  "Jvm系列-深入理解类加载过程"
-date:   2019-09-09 20:06:06
+date:   2019-09-08 20:06:06
 categories: JVM
 tags: JVM 类加载
 ---
 
-[TOC]
+* content
+{:toc}
 ## 类加载器主要流程：
 
 加载>连接（校验，准备，解析）>初始化>使用>卸载
