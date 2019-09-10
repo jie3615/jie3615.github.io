@@ -121,11 +121,11 @@ hello world
 
 
 
-> ```html
-> [Loaded jvm.classloader.MyParent1 from file:/F:/gitPro/java_study/out/production/java_study/] 
-> [Loaded jvm.classloader.MyChild1 from file:/F:/gitPro/java_study/out/production/java_study/]  MyParent1 静态代码块执行    hello world .......**  
-> 可以看出即使MyChild1没有初始化也是先加载了的
-> ```
+ ```html
+ [Loaded jvm.classloader.MyParent1 from file:/F:/gitPro/java_study/out/production/java_study/] 
+ [Loaded jvm.classloader.MyChild1 from file:/F:/gitPro/java_study/out/production/java_study/]  MyParent1 静态代码块执行    hello world ....... 
+ 可以看出即使MyChild1没有初始化也是先加载了的
+ ```
 
 test002：
 
@@ -221,6 +221,6 @@ b2a4e712-4df1-4bfd-a667-6d13ead5eaba
 
 那就只能在运行期间进行类初始化并执行方法；
 
-> 如果像上面把MyParent3编译后的类字节码删除会抛出classNotFound 异常在一个常量在编译期间不能确定的话就不会放在调用类的常量池中,从class文件的对比情况也可以发现
+如果像上面把MyParent3编译后的类字节码删除会抛出classNotFound 异常在一个常量在编译期间不能确定的话就不会放在调用类的常量池中,从class文件的对比情况也可以发现
 ---
   本文版权归作者本人拥有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。
