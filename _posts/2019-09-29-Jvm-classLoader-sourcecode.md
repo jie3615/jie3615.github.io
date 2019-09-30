@@ -2,14 +2,13 @@
 layout: post
 title:  "Jvm系列-深入理解类加载器ClassLoader"
 date:   2019-09-29 20:06:06
-categories: 并发
+categories: JVM
 tags: 类加载器 ClassLoader Jvm
 ---
 
 * content
 {:toc}
 ## 类加载器的种类
-
 1. 根类/启动类加载器
 2. 扩展类加载器
 3. 系统类/应用类加载器

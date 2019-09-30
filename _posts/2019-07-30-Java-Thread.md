@@ -2,7 +2,7 @@
 layout: post
 title:  "Java并发系列-深入Jvm理解Thread启动流程"
 date:   2019-07-29 20:06:06
-categories: JVM
+categories: 并发
 tags: Java 线程 Jvm
 ---
 
