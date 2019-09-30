@@ -15,6 +15,7 @@ type: page
 
 ## 联系我
 * email：11jkyj@sina.com
+* github:https://github.com/jie3615/
 
 ## 友情链接
 
