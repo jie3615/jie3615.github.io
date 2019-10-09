@@ -38,35 +38,30 @@ public class ByteCodeTest1 {
 Javap -verbose xxx(class文件)
 
 ```Java
-public class jvm.bytecode.ByteCodeTest1 {
-  public jvm.bytecode.ByteCodeTest1();
-    Code:
-       0: aload_0
-       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
-       4: aload_0
-       5: iconst_1
-       6: putfield      #2                  // Field a:I
-       9: return
+package jvm.bytecode;
 
-  public int getA();
-    Code:
-       0: aload_0
-       1: getfield      #2                  // Field a:I
-       4: ireturn
+/**
+ * @author: wyj
+ * @date: 2019/9/30
+ * @description:
+ */
+public class ByteCodeTest1 {
+    private int a = 1;
 
-  public void setA(int);
-    Code:
-       0: aload_0
-       1: iload_1
-       2: putfield      #2                  // Field a:I
-       5: return
+    public int getA() {
+        return a;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
 }
+```
 
 
 字节码详细信息；
-  Last modified 2019-9-30; size 489 bytes
-  MD5 checksum 8f3296ee4d2527846ae186a6c634bee3
-  Compiled from "ByteCodeTest1.java"
+  
+```
 public class jvm.bytecode.ByteCodeTest1
   minor version: 0
   major version: 52
@@ -146,10 +141,7 @@ Constant pool:
             0       6     1     a   I
 }
 SourceFile: "ByteCodeTest1.java"
-
-
 ```
-
 
 
 ## 二进制文件
