@@ -33,7 +33,6 @@ public class ByteCodeTest1 {
 
 
 
-
 ## 字节码
 
 Javap -verbose xxx(class文件)
@@ -155,7 +154,7 @@ SourceFile: "ByteCodeTest1.java"
 
 ## 二进制文件
 
-![img](C:/Users/Administrator/AppData/Local/YNote/data/yjwang3615@163.com/8da71fcecd8640e1b65eb71d56d4cb68/clipboard.png)
+![image](https://raw.githubusercontent.com/jie3615/blogImages/master/images/bytecode1.png)
 
 
 
