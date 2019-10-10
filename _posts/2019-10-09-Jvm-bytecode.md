@@ -2,7 +2,7 @@
 layout: post
 title:  "Jvm系列-深入理解字节码文件（一）"
 date:   2019-10-09 20:06:06
-categories: 并发
+categories: Jvm
 tags: 字节码 Jvm
 ---
 
@@ -10,14 +10,7 @@ tags: 字节码 Jvm
 {:toc}
 ## 源码
 
-```Java
-package jvm.bytecode;
-
-/**
- * @author: wyj
- * @date: 2019/9/30
- * @description:
- */
+```
 public class ByteCodeTest1 {
     private int a = 1;
 
@@ -29,7 +22,7 @@ public class ByteCodeTest1 {
         this.a = a;
     }
 }
-```
+````
 
 
 
