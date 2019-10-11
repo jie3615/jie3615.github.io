@@ -68,13 +68,87 @@ filedinfo {
 
 方法数量：00 03 三个方法，如下：
 
+---
+layout: post
+title:  "Jvm系列-深入理解字节码文件-常量池之后（二）"
+date:   2019-10-11 20:06:06
+categories: Jvm
+tags: 字节码 Jvm
+---
+
+[TOC]
+**常量池之后，接上篇分析**
+
+## 类相关的字节码分析
+
+
+
+
+
+
+类的访问标志符号，0021 ，对比如下访问标志对应关系表；
+
+| 标记名         | 值     | 含义                                                |
+| -------------- | ------ | --------------------------------------------------- |
+| ACC_PUBLIC     | 0x0001 | 可以被包的类外访问。                                |
+| ACC_FINAL      | 0x0010 | 不允许有子类。                                      |
+| ACC_SUPER      | 0x0020 | 当用到invokespecial指令时，需要特殊处理的父类方法。 |
+| ACC_INTERFACE  | 0x0200 | 标识定义的是接口而不是类。                          |
+| ACC_ABSTRACT   | 0x0400 | 不能被实例化。                                      |
+| ACC_SYNTHETIC  | 0x1000 | 标识并非Java源码生成的代码。                        |
+| ACC_ANNOTATION | 0x2000 | 标识注解类型                                        |
+| ACC_ENUM       | 0x4000 | 标识枚举类型                                        |
+
+找不到直接对应的访问标志，实际上是通过0x0001和0x0020并集得到的；
+
+类的名字：00 03 常量池中 // jvm/bytecode/ByteCodeTest1
+
+父类的名字：00 04  常量池中 // java/lang/Object
+
+1. 接口数量：00 00 没有；
+2. 成员变量的数量： 00 01
+
+变量表：字段表结构
+
+```json
+filedinfo {
+             u2 access_flags:00 02 private
+             u2 name_index;00 05 常量池中 a
+             u2 descripor_index;00 06 常量池中 I
+             u2 attributes_count; 00 00 没有属性
+             attribute_info attributes[attributes_count]; 无
+         }
+```
+
+下面表格字段访问属性取值范围；
+
+| 标记名        | 值     | 说明                                |
+| ------------- | ------ | ----------------------------------- |
+| ACC_PUBLIC    | 0x0001 | public，表示字段可以从任何包访问。  |
+| ACC_PRIVATE   | 0x0002 | private，表示字段仅能该类自身调用。 |
+| ACC_PROTECTED | 0x0004 | protected，表示字段可以被子类调用。 |
+| ACC_STATIC    | 0x0008 | static，表示静态字段。              |
+| ACC_FINAL     | 0x0010 | final，表示字段定义后值无法修改。   |
+| ACC_VOLATILE  | 0x0040 | volatile，表示字段是易变的。        |
+| ACC_TRANSIENT | 0x0080 | transient，表示字段不会被序列化。   |
+| ACC_SYNTHETIC | 0x1000 | 表示字段由编译器自动产生。          |
+| ACC_ENUM      | 0x4000 | enum，表示字段为枚举类型。          |
+
+## 方法相关字节码分析
+
+方法数量：00 03 三个方法，如下：
+
+
+```
 <init>
 
 setA()
 
 getA()
+```
 
-方法属性结构<init>
+
+> 方法属性结构<init>
 
 ```json
 method_info { 
