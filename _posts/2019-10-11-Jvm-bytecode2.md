@@ -35,12 +35,13 @@ tags: 字节码 Jvm
 
 父类的名字：00 04  常量池中 // java/lang/Object
 
-1. 接口数量：00 00 没有；
+1. 接口数量：00 00 没有
 2. 成员变量的数量： 00 01
 
 变量表：字段表结构
 
-```json
+
+```
 filedinfo {
              u2 access_flags:00 02 private
              u2 name_index;00 05 常量池中 a
@@ -50,75 +51,7 @@ filedinfo {
          }
 ```
 
-下面表格字段访问属性取值范围；
 
-| 标记名        | 值     | 说明                                |
-| ------------- | ------ | ----------------------------------- |
-| ACC_PUBLIC    | 0x0001 | public，表示字段可以从任何包访问。  |
-| ACC_PRIVATE   | 0x0002 | private，表示字段仅能该类自身调用。 |
-| ACC_PROTECTED | 0x0004 | protected，表示字段可以被子类调用。 |
-| ACC_STATIC    | 0x0008 | static，表示静态字段。              |
-| ACC_FINAL     | 0x0010 | final，表示字段定义后值无法修改。   |
-| ACC_VOLATILE  | 0x0040 | volatile，表示字段是易变的。        |
-| ACC_TRANSIENT | 0x0080 | transient，表示字段不会被序列化。   |
-| ACC_SYNTHETIC | 0x1000 | 表示字段由编译器自动产生。          |
-| ACC_ENUM      | 0x4000 | enum，表示字段为枚举类型。          |
-
-## 方法相关字节码分析
-
-方法数量：00 03 三个方法，如下：
-
----
-layout: post
-title:  "Jvm系列-深入理解字节码文件-常量池之后（二）"
-date:   2019-10-11 20:06:06
-categories: Jvm
-tags: 字节码 Jvm
----
-
-[TOC]
-**常量池之后，接上篇分析**
-
-## 类相关的字节码分析
-
-
-
-
-
-
-类的访问标志符号，0021 ，对比如下访问标志对应关系表；
-
-| 标记名         | 值     | 含义                                                |
-| -------------- | ------ | --------------------------------------------------- |
-| ACC_PUBLIC     | 0x0001 | 可以被包的类外访问。                                |
-| ACC_FINAL      | 0x0010 | 不允许有子类。                                      |
-| ACC_SUPER      | 0x0020 | 当用到invokespecial指令时，需要特殊处理的父类方法。 |
-| ACC_INTERFACE  | 0x0200 | 标识定义的是接口而不是类。                          |
-| ACC_ABSTRACT   | 0x0400 | 不能被实例化。                                      |
-| ACC_SYNTHETIC  | 0x1000 | 标识并非Java源码生成的代码。                        |
-| ACC_ANNOTATION | 0x2000 | 标识注解类型                                        |
-| ACC_ENUM       | 0x4000 | 标识枚举类型                                        |
-
-找不到直接对应的访问标志，实际上是通过0x0001和0x0020并集得到的；
-
-类的名字：00 03 常量池中 // jvm/bytecode/ByteCodeTest1
-
-父类的名字：00 04  常量池中 // java/lang/Object
-
-1. 接口数量：00 00 没有；
-2. 成员变量的数量： 00 01
-
-变量表：字段表结构
-
-```json
-filedinfo {
-             u2 access_flags:00 02 private
-             u2 name_index;00 05 常量池中 a
-             u2 descripor_index;00 06 常量池中 I
-             u2 attributes_count; 00 00 没有属性
-             attribute_info attributes[attributes_count]; 无
-         }
-```
 
 下面表格字段访问属性取值范围；
 
@@ -150,7 +83,9 @@ getA()
 
 > 方法属性结构<init>
 
-```json
+
+
+```
 method_info { 
     u2 access_flags; 00 01 方法是public 的
     u2 name_index; 00 07 名字索引类型，常量池中  <init>         
@@ -159,6 +94,7 @@ method_info {
     attribute_info attributes[attributes_count]; 
 }
 ```
+
 
 下面表格方法访问属性access_flags取值范围
 
@@ -179,13 +115,16 @@ method_info {
 
 下面是分析attribute_info 的数据结构代表方法的属性的信息
 
-```json
+
+
+```
 attribute_info {
     u2 attribute_name_index; 00 09 常量池中 Code，就是代表了这个方法的执行代码
     u4 attribute_length; 00 00 00 38 十进制56 ，会占用56个字节长度的空间
     u1 info[attribute_length];56个长度
 }
 ```
+
 
 上面这个属性表是个通用的结构，在ClassFile、field_info、method_info、code_attribute中都有使用；通过属性名区分，下图代表着各种场景的对应关系；
 
@@ -216,7 +155,9 @@ attribute_info {
 
 下面是code的数据结构：保存该方法的结构
 
-```Java
+
+
+```
 Code_attribute {
     u2 attribute_name_index; 00 09 常量池中 Code，就是代表了这个方法的执行代码
     u4 attribute_length; 00 00 00 38 十进制56 ，会占用56个字节长度的空间
@@ -258,12 +199,15 @@ Code_attribute {
 }
 ```
 
+
 方法的属性结构 u1 info  code的结构
 
  LineNumberTable 的属性结构如下
 
-```json
- LineNumberTable_attribute {
+
+
+```
+LineNumberTable_attribute {
 
                 u2 attribute_name_index;
                 u4 attribute_length; 
@@ -275,9 +219,12 @@ Code_attribute {
             }
 ```
 
+
 接下来就是第二个方法的结构：方法属性结构getA()
 
-```json
+
+
+```
 method_info { 
     u2 access_flags; 00 01 方法是public 的
     u2 name_index; 00 0e 名字索引类型，常量池中  getA       
@@ -287,9 +234,12 @@ method_info {
 }
 ```
 
+
 接下来是Code属性的结构
 
-```json
+
+
+```
 Code_attribute {
     u2 attribute_name_index; 00 09 常量池中 Code，就是代表了这个方法的执行代码
     u4 attribute_length; 00 00 00 2f 十进制47 ，会占用47个字节长度的空间
@@ -328,11 +278,14 @@ Code_attribute {
 }
 ```
 
+
 代码最终都会形成指令保存在方法表中
 
 接下来就是第三个方法的结构：方法属性结构SetA，分析方式同上
 
-```json
+
+
+```
 method_info { 
     u2 access_flags; 00 01 方法是public 的
     u2 name_index; 00 0e 名字索引类型，常量池中  getA       
@@ -342,7 +295,7 @@ method_info {
 }......省略
 ```
 
-最后是源文件信息对应常量池中的#19
 
-  ---
+最后是源文件信息对应常量池中的#19
+   ---
   本文版权归作者本人拥有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。
